@@ -1,4 +1,4 @@
-# docker centeos-repo mirror
+# docker centos-repo mirror
 
 This docker image can be startet as a container
 and it can serve as a replacment for the standard
@@ -16,35 +16,25 @@ In that way it can serve as an endpoint for another
 container requiring yum packages from the central
 operation system install repositories.
 
-## building the image
+# superseded by new project
 
-There are two ways (1) do sync to local disk and then
-build an image as a copy or (2) do start a container
-and use wget-mirror to build the copy.
+https://github.com/gdraheim/docker-mirror-packages-repo
 
-     # Variant 1
-     make sync
-     make build
-     make check
+The new project creates mirror images for other Linux
+distributions as well. So opensuse zypper and ubuntu
+apt-get can install packages from a local repo container
+as well. Again it can be done without changing the 
+preinstalled repo descriptors.
 
-     # Variant 2
-     make 7.3
-     make check
+Tested repos are
 
-
-# Tipps and Tricks
-
-Probably you will not be able to build the images.
-
-That's because docker has a so called "baseimage"
-that is the source of all "image" snapshots. No
-image can be bigger than the baseimage. And the
-baseimage has a default size of 10GB.
-
-Edit /etc/sysconfig/docker and increase that like
-
-    DOCKER_OPTS="--storage-opt dm.basesize=30G"
-
-Theoretically one can just do "service docker restart"
-but in reality some versions needed the old baseimage
-to be removed from disk so that it is allocated again.
+ * localhost:5000/mirror-packages/centos-repo:7.3.1611 (17.3GB)
+ * localhost:5000/mirror-packages/centos-repo:7.4.1708 (13.2GB)
+ * localhost:5000/mirror-packages/centos-repo:7.5.1804 (14.7GB)
+ * localhost:5000/mirror-packages/opensuse-repo:15.0   (48.9GB)
+ * localhost:5000/mirror-packages/opensuse-repo:42.3   (38.6GB)
+ * localhost:5000/mirror-packages/ubuntu-repo:16.04    (74.7GB)
+ * localhost:5000/mirror-packages/ubuntu-repo:18.04    (19.5GB)
+ * localhost:5000/mirror-packages/ubuntu-repo/universe:16.04 (186GB)
+ * localhost:5000/mirror-packages/ubuntu-repo/updates:16.04 (74.7GB)
+ * localhost:5000/mirror-packages/ubuntu-repo/updates:18.04 (19.5GB)
