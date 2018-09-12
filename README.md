@@ -18,7 +18,7 @@ operation system install repositories.
 
 # superseded by new project
 
-https://github.com/gdraheim/docker-mirror-packages-repo
+## https://github.com/gdraheim/docker-mirror-packages-repo
 
 The new project creates mirror images for other Linux
 distributions as well. So opensuse zypper and ubuntu
